@@ -74,7 +74,7 @@ const VideoPlayer: FC<{
     ratio: `${width ?? 16}:${height ?? 9}`,
     fullscreen: { iosNative: true },
   }
- return <PlyrReact id="plyr" source={plyrSource} options={plyrOptions} />
+ return <PlyrReact id="plyr" source={plyrSource as any} options={plyrOptions as any} />
 }
 
 const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
