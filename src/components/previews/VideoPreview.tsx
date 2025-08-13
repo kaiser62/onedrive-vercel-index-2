@@ -63,19 +63,16 @@ const VideoPlayer: FC<{
   }, [videoUrl, isFlv, mpegts, subtitle])
 
   // Common plyr configs, including the video source and plyr options
-  const plyrSource = {
+  const plyrSource = { 
     type: 'video',
     title: videoName,
     poster: thumbnail,
     tracks: [{ kind: 'captions', label: videoName, src: '', default: true }],
+    sources: !isFlv ? [{ src: videoUrl }] : [],
   }
   const plyrOptions = {
     ratio: `${width ?? 16}:${height ?? 9}`,
     fullscreen: { iosNative: true },
-  }
-  if (!isFlv) {
-    // If the video is not in flv format, we can use the native plyr and add sources directly with the video URL
-    plyrSource['sources'] = [{ src: videoUrl }]
   }
  return <PlyrReact id="plyr" source={plyrSource} options={plyrOptions} />
 }
