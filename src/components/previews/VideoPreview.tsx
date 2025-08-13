@@ -6,7 +6,13 @@ import { useTranslation } from 'next-i18next'
 
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import Plyr from 'plyr-react'
+import dynamic from 'next/dynamic';
+
+const PlyrReact = dynamic(() => import('plyr-react'), {
+  ssr: false,
+  loading: () => <div>Loading player...</div>
+});
+
 import { useAsync } from 'react-async-hook'
 import { useClipboard } from 'use-clipboard-copy'
 
